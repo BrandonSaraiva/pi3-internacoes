@@ -34,16 +34,17 @@ CREATE TABLE "public"."Internacoes_Procedimento_Municipio" (
 
 Os dados utilizados no projeto correspondiam a um período de quatro anos, entre 2019 e 2022, e foram agrupados por trimestre para facilitar a análise.
 
-Características dos dados
+**Características dos dados**
 
 Os dados foram disponibilizados em formato CSV, com separador de ponto e vírgula e codificação Latin-1. As tabelas foram organizadas por municípios brasileiros (linhas) e por subgrupos de procedimentos hospitalares (colunas).
 
-Tratamento e Carregamento
+**Tratamento e Analises**
 
-O processo de limpeza dos dados envolveu a remoção do cabeçalho e rodapé que continham informações do arquivo e a atribuição da fonte de dados. O nome dos procedimentos hospitalares também foi modificado para facilitar a legibilidade e remover os códigos internos do SUS.
+Alguns tratamentos adicionais como mudar a tipagem de algumas colunas foram feitas usando python, mais especificamente na plataforma jupyter notebook. A criação de gráficos foi através do software SAS e também com o python, com o auxilio de bibliotecas como matplotlib, seaborn, numpy, entre outros.
 
-Após a limpeza, os dados foram carregados em data frames do pandas e organizados por ano e trimestre. Três novas colunas foram criadas para cada data frame para melhorar a análise. Por fim, os data frames foram concatenados para facilitar uma análise abrangente.
+Um dos exemplos de gráficos feito:
+https://github.com/BrandonSaraiva/pi3-internacoes/assets/90096835/44b4669c-6fb9-44e6-b6e5-80e1388cd85a
 
-Conclusão
+**Conclusão**
 
-Os resultados deste projeto ajudarão profissionais de saúde e formuladores de políticas a entender melhor a relação entre internações, duração da estadia hospitalar e mortalidade no Brasil. A análise mostrou que alguns procedimentos têm uma taxa de internação mais alta, duração de estadia hospitalar mais longa e taxas de mortalidade mais altas do que outros. Essas descobertas podem apoiar o desenvolvimento de políticas de saúde pública mais eficazes e melhorar os resultados de saúde para a população brasileira.
+Os resultados deste projeto podem ajudar profissionais de saúde e formuladores de políticas a entender melhor a relação entre internações, duração da estadia hospitalar e mortalidade no Brasil. A análise mostrou que alguns procedimentos têm uma taxa de internação mais alta, duração de estadia hospitalar mais longa e taxas de mortalidade mais altas do que outros. Essas descobertas podem apoiar o desenvolvimento de políticas de saúde pública mais eficazes e melhorar os resultados de saúde para a população brasileira.
