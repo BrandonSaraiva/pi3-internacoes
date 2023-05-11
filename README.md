@@ -42,7 +42,8 @@ Os dados foram disponibilizados em formato CSV, com separador de ponto e vírgul
 
 Alguns tratamentos adicionais como mudar a tipagem de algumas colunas foram feitas usando python, mais especificamente na plataforma jupyter notebook. A criação de gráficos foi através do software SAS e também com o python, com o auxilio de bibliotecas como matplotlib, seaborn, numpy, entre outros.
 
-Um dos exemplos de gráficos feito:
+Segue um exemplo de um gráfico que foi transformado em gif:
+
 https://github.com/BrandonSaraiva/pi3-internacoes/assets/90096835/44b4669c-6fb9-44e6-b6e5-80e1388cd85a
 
 **Conclusão**
