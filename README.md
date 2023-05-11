@@ -11,32 +11,22 @@ O banco de dados SIH forneceu o número de internações por subgrupo de procedi
 Os arquivos CSV foram organizados por ano e trimestre utilizando a plataforma, e passaram por um processo de limpeza de dados, que incluiu a separação do código IBGE e do nome do município em colunas distintas e a substituição dos valores nulos por zero. Em seguida, os dados foram tratados usando a linguagem de programação Python, onde foram carregados em data frames do Pandas e organizados por ano e trimestre. Foram criadas três novas colunas para cada data frame, e os dados foram concatenados em um único data frame e exportados para um arquivo CSV. Esse processo foi repetido para cada uma das três bases de dados do SUS. Os resultados do tratamento dos dados resultaram em quatro tabelas em CSV: Internacoes_Procedimento_Municipio, Media_Dias_Internacao, Obitos, e Municipios_IBGE_BR. Essas tabelas foram carregadas no banco de dados PostgreSQL usando SQL através do software TablePlus. Exemplo de criação da tabela:
 ```
 CREATE TABLE "public"."Internacoes_Procedimento_Municipio" (
-"Ano" varchar NOT NULL,
-"Trimestre" varchar NOT NULL,
-"UID" varchar NOT NULL PRIMARY KEY
-,
-"Codigo_Municipio" varchar NOT NULL,
-"Nome_Municipio" text NOT NULL,
-"Coleta_Material" int4
-,
-"Diagnostico_Endoscopia" int4
-,
-"Metodos_Diagnosticos_Especialidades" int4
-,
-"Consultas_Atendimentos_Acompanhamentos" int4
-,
-"Tratamentos_Clinicos_Outras_Especialidades" int4
-,
-"Tratamento_Oncologia" int4
-,
-"Tratamento_Nefrologia" int4
-,
-...
-"Acompanhamento_Intercorrencias_Pre_Pos_Transplante" int4
-,
-CONSTRAINT "Internacoes_Procedimento_Municipio_19
--22_Codigo_Municipio_fkey"
-FOREIGN KEY ("Codigo_Municipio") REFERENCES "public"."Municipios_IBGE_BR"("IBGE")
+    "Ano" varchar NOT NULL,
+    "Trimestre" varchar NOT NULL,
+    "UID" varchar NOT NULL PRIMARY KEY,
+    "Codigo_Municipio" varchar NOT NULL,
+    "Nome_Municipio" text NOT NULL,
+    "Coleta_Material" int4,
+    "Diagnostico_Endoscopia" int4,
+    "Metodos_Diagnosticos_Especialidades" int4,
+    "Consultas_Atendimentos_Acompanhamentos" int4,
+    "Tratamentos_Clinicos_Outras_Especialidades" int4,
+    "Tratamento_Oncologia" int4,
+    "Tratamento_Nefrologia" int4,
+    ...
+    "Acompanhamento_Intercorrencias_Pre_Pos_Transplante" int4,
+    CONSTRAINT "Internacoes_Procedimento_Municipio_19-22_Codigo_Municipio_fkey"
+        FOREIGN KEY ("Codigo_Municipio") REFERENCES "public"."Municipios_IBGE_BR"("IBGE")
 );
 ```
 
