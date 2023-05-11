@@ -37,7 +37,7 @@ Os dados utilizados no projeto correspondiam a um período de quatro anos, entre
 
 # Características dos dados
 
-Os dados foram disponibilizados em formato CSV, com separador de ponto e vírgula e codificação Latin-1. As tabelas foram organizadas por municípios brasileiros (linhas) e por subgrupos de procedimentos hospitalares (colunas).
+Os dados foram disponibilizados em formato CSV, com separador de ponto e vírgula e codificação Latin-1. 
 
 # Tratamento e Analises
 
