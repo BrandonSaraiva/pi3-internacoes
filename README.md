@@ -1,52 +1,52 @@
-# Sobre
-Este projeto, desenvolvido por Arquimedes Aquides, Brandon Cardoso, Guilherme Rocha e Robson Ricardo, fez parte do curso de Ciência de Dados e IA e teve como foco investigar a relação entre internações, duração da estadia hospitalar e mortalidade no Brasil.
+# About
+This project, developed by Arquimedes Aquides, Brandon Cardoso, Guilherme Rocha and Robson Ricardo, was part of the Data Science and AI course and focused on investigating the relationship between hospitalizations, length of hospital stay and mortality in Brazil.
 
-# Dados
+# Data
 
-O projeto utilizou dados públicos fornecidos pelo Ministério da Saúde do Brasil, por meio da plataforma DATASUS (SIH/SUS). Os dados consistiam em três grandes bancos de dados: Sistema de Informações Hospitalares (SIH), Internações por Procedimento, Mortes por Procedimento e Duração Média da Hospitalização por Procedimento.
+The project used public data provided by the Brazilian Ministry of Health, through the DATASUS platform (SIH/SUS). The data consisted of three large databases: Hospital Information System (SIH), Hospitalizations per Procedure, Deaths per Procedure, and Average Duration of Hospitalization per Procedure.
 
-O banco de dados SIH forneceu o número de internações por subgrupo de procedimento em cada um dos municípios brasileiros. O banco de dados *"Internações por Procedimento"* forneceu o número de internações para procedimentos, diagnósticos, cirurgias, ações relacionadas a transplantes de órgãos e tecidos, entre outros. O banco de dados *"Mortes por Procedimento"* forneceu o número de mortes por subgrupo de procedimento em cada município brasileiro. Por fim, o banco de dados Duração *"Média da Hospitalização"* por Procedimento forneceu a duração média da hospitalização, em dias, para cada subgrupo de procedimento em cada município.
+The SIH database provided the number of hospitalizations by procedure subgroup in each of the Brazilian municipalities. The *"Admissions by Procedure"* database provided the number of hospitalizations for procedures, diagnoses, surgeries, actions related to organ and tissue transplants, among others. The *"Deaths by Procedure"* database provided the number of deaths by procedure subgroup in each Brazilian municipality. Finally, the Duration *"Average Hospitalization"* by Procedure database provided the average duration of hospitalization, in days, for each procedure subgroup in each municipality.
 
-# Procedimentos
+# Procedures
 
-Os arquivos CSV foram organizados por ano e trimestre utilizando a plataforma, e passaram por um processo de limpeza de dados, que incluiu a separação do código IBGE e do nome do município em colunas distintas e a substituição dos valores nulos por zero. Em seguida, os dados foram tratados usando a linguagem de programação Python, onde foram carregados em data frames do Pandas e organizados por ano e trimestre. Foram criadas três novas colunas para cada data frame, e os dados foram concatenados em um único data frame e exportados para um arquivo CSV. Esse processo foi repetido para cada uma das três bases de dados do SUS. Os resultados do tratamento dos dados resultaram em quatro tabelas em CSV: Internacoes_Procedimento_Municipio, Media_Dias_Internacao, Obitos, e Municipios_IBGE_BR. Essas tabelas foram carregadas no banco de dados PostgreSQL usando SQL através do software TablePlus. Exemplo de criação da tabela:
+The CSV files were organized by year and quarter using the platform, and went through a data cleaning process, which included separating the IBGE code and the name of the municipality into different columns and replacing null values with zero. Then, the data was processed using the Python programming language, where it was loaded into Pandas data frames and organized by year and quarter. Three new columns were created for each data frame, and the data was concatenated into a single data frame and exported to a CSV file. This process was repeated for each of the three SUS databases. The results of data processing resulted in four CSV tables: Internacoes_Procedimento_Municipio, Media_Dias_Internacao, Obitos, and Municipios_IBGE_BR. These tables were loaded into the PostgreSQL database using SQL through TablePlus software. Example of table creation:
 ```
 CREATE TABLE "public"."Internacoes_Procedimento_Municipio" (
-    "Ano" varchar NOT NULL,
-    "Trimestre" varchar NOT NULL,
-    "UID" varchar NOT NULL PRIMARY KEY,
-    "Codigo_Municipio" varchar NOT NULL,
-    "Nome_Municipio" text NOT NULL,
-    "Coleta_Material" int4,
-    "Diagnostico_Endoscopia" int4,
-    "Metodos_Diagnosticos_Especialidades" int4,
-    "Consultas_Atendimentos_Acompanhamentos" int4,
-    "Tratamentos_Clinicos_Outras_Especialidades" int4,
-    "Tratamento_Oncologia" int4,
-    "Tratamento_Nefrologia" int4,
-    ...
-    "Acompanhamento_Intercorrencias_Pre_Pos_Transplante" int4,
-    CONSTRAINT "Internacoes_Procedimento_Municipio_19-22_Codigo_Municipio_fkey"
-        FOREIGN KEY ("Codigo_Municipio") REFERENCES "public"."Municipios_IBGE_BR"("IBGE")
+     "Year" varchar NOT NULL,
+     "Quarter" varchar NOT NULL,
+     "UID" varchar NOT NULL PRIMARY KEY,
+     "Codigo_Municipio" varchar NOT NULL,
+     "Municipality_Name" text NOT NULL,
+     "Material_Collection" int4,
+     "Diagnostic_Endoscopy" int4,
+     "Metodos_Diagnosticos_Specialties" int4,
+     "Inquiries_Services_Follow-ups" int4,
+     "Clinical_Treatments_Outras_Specialties" int4,
+     "Treatment_Oncology" int4,
+     "Treatment_Nephrology" int4,
+     ...
+     "Monitoring_Intercorrencias_Pre_Pos_Transplante" int4,
+     CONSTRAINT "Internacoes_Procedimento_Municipio_19-22_Codigo_Municipio_fkey"
+         FOREIGN KEY ("Codigo_Municipio") REFERENCES "public"."Municipios_IBGE_BR"("IBGE")
 );
 ```
 
-# Período dos dados
+# Data period
 
-Os dados utilizados no projeto correspondiam a um período de quatro anos, entre 2019 e 2022, e foram agrupados por trimestre para facilitar a análise.
+The data used in the project corresponded to a period of four years, between 2019 and 2022, and were grouped by quarter to facilitate analysis.
 
-# Características dos dados
+# Data characteristics
 
-Os dados foram disponibilizados em formato CSV, com separador de ponto e vírgula e codificação Latin-1. 
+The data was made available in CSV format, with a semicolon separator and Latin-1 encoding.
 
-# Tratamento e Analises
+# Treatment and Analysis
 
-Alguns tratamentos adicionais como mudar a tipagem de algumas colunas foram feitas usando python, mais especificamente na plataforma jupyter notebook. A criação de gráficos foi através do software SAS e também com o python, com o auxilio de bibliotecas como matplotlib, seaborn, numpy, entre outros.
+Some additional treatments, such as changing the typing of some columns, were done using Python, more specifically on the Jupyter Notebook platform. The graphics were created using SAS software and also with Python, with the help of libraries such as matplotlib, seaborn, numpy, among others.
 
-Segue um exemplo de um gráfico que foi transformado em gif:
+Below is an example of a graph that was transformed into a gif:
 
 https://github.com/BrandonSaraiva/pi3-internacoes/assets/90096835/44b4669c-6fb9-44e6-b6e5-80e1388cd85a
 
-# Conclusão
+# Conclusion
 
-Os resultados deste projeto podem ajudar profissionais de saúde e formuladores de políticas a entender melhor a relação entre internações, duração da estadia hospitalar e mortalidade no Brasil. A análise mostrou que alguns procedimentos têm uma taxa de internação mais alta, duração de estadia hospitalar mais longa e taxas de mortalidade mais altas do que outros. Essas descobertas podem apoiar o desenvolvimento de políticas de saúde pública mais eficazes e melhorar os resultados de saúde para a população brasileira.
+The results of this project can help healthcare professionals and policymakers better understand the relationship between hospitalizations, length of hospital stay and mortality in Brazil. The analysis showed that some procedures have a higher hospitalization rate, longer length of hospital stay, and higher mortality rates than others. These findings can support the development of more effective public health policies and improve health outcomes for the Brazilian population.
